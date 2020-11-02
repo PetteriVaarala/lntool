@@ -1,0 +1,17 @@
+# Location of the links
+link_folder: /home/petteri/bin
+# Locations of the linked binaries
+bin_folder: /home/petteri/bin/bins
+
+# Application
+
+applications:
+  kubectl:
+    type: bin
+    url: https://storage.googleapis.com/kubernetes-release/release/{{version}}/bin/linux/amd64/kubectl
+  helm:
+    type: tar_gz
+    extract_bin: linux-amd64/helm
+    url: https://get.helm.sh/helm-{{version}}-linux-amd64.tar.gz
+    checksum: https://get.helm.sh/helm-{{version}}-linux-amd64.tar.gz.sha256sum
+    checksum_type: sha256sum
