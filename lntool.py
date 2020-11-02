@@ -21,7 +21,9 @@ with open("config.yaml") as f:
 @click.option("--force-download", is_flag=True, help="force download")
 def cli(app, version, download_only, force_download):
 
-    bin_dest = f"{config['bin_folder']}/{app}_{version}"
+    # Get paths and replace ~ with absolute path
+    bin_dest = f"{config['bin_folder']}/{app}_{version}".replace("~", os.path.expanduser('~'))
+    link_src = f"{config['link_folder']}/{app}".replace("~", os.path.expanduser('~'))
 
     # Check if app is already there
     if not os.path.exists(bin_dest) or force_download:
@@ -72,7 +74,6 @@ def cli(app, version, download_only, force_download):
             os.chmod(bin_dest, 0o755)
 
     # Creale symlink to app
-    link_src = f"{config['link_folder']}/{app}"
     if os.path.islink(link_src):
         os.unlink(link_src)
     link_rel_dest = os.path.relpath(bin_dest, os.path.dirname(link_src))

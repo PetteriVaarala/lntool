@@ -1,7 +1,7 @@
 # Location of the links
-link_folder: /home/petteri/bin
+link_folder: ~/bin
 # Locations of the linked binaries
-bin_folder: /home/petteri/bin/bins
+bin_folder: ~/bin/bins
 
 # Application
 
