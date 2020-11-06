@@ -22,8 +22,10 @@ with open("config.yaml") as f:
 def cli(app, version, download_only, force_download):
 
     # Get paths and replace ~ with absolute path
-    bin_dest = f"{config['bin_folder']}/{app}_{version}".replace("~", os.path.expanduser('~'))
-    link_src = f"{config['link_folder']}/{app}".replace("~", os.path.expanduser('~'))
+    bin_dest = f"{config['bin_folder']}/{app}_{version}".replace(
+        "~", os.path.expanduser("~")
+    )
+    link_src = f"{config['link_folder']}/{app}".replace("~", os.path.expanduser("~"))
 
     # Check if app is already there
     if not os.path.exists(bin_dest) or force_download:
